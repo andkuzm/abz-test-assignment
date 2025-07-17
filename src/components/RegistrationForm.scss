@@ -1,0 +1,71 @@
+.RegistrationFormContainer {
+  align-items: center;
+  img{
+    margin-left: 5%;
+    max-width: 80%;
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1.5rem;
+    gap: 2.8rem;
+    #outlined-basic{
+      margin: 0;
+      background: white;
+      border: 1px solid lightgray;
+      border-radius: 0.2rem;
+      padding: 20px 30px;
+      box-sizing: border-box;
+      width: 330px;
+      justify-self: center;
+    }
+    .positions {
+      align-self: start;
+      .position-container {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        row-gap: 0.5rem;
+        column-gap: 0.5rem;
+
+        label {
+          justify-self: start;
+        }
+
+        input {
+          width: fit-content;
+        }
+      }
+    }
+    .file-upload-wrapper {
+      display: flex;
+      align-items: center;
+      border: 1px solid #d0cfcf;
+      border-radius: 4px;
+      padding: 0;
+      width: 330px;
+      height: 54px;
+      background-color: white;
+      position: relative;
+
+      label {
+        background: white;
+        border: 1px solid #000000;
+        padding: 0.8rem 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        margin-right: 1rem;
+      }
+
+      .upload-text {
+        color: #7e7e7e;
+        font-size: 14px;
+      }
+
+      .file-selector {
+        display: none;
+      }
+    }
+  }
+}

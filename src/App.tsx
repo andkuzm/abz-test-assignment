@@ -4,15 +4,17 @@ import UpperTextField from "./components/UpperTextField.tsx";
 import RegistrationForm from "./components/RegistrationForm.tsx";
 import UserList from "./components/UserList.tsx";
 import {useRef, useState} from "react";
+// @ts-ignore
 import "@fontsource/nunito";
 
 function App() {
 
     const [reloadKey, setReloadKey] = useState(0);
-    const myRef = useRef(null);
+    const myRef = useRef<HTMLDivElement>(null);
 
 
     const executeScroll = () => {
+        // @ts-ignore
         if (myRef.current) {
             myRef.current.scrollIntoView({ behavior: "smooth" });
         } else {
@@ -25,6 +27,7 @@ function App() {
         executeScroll();
     }
 
+    //@ts-ignore
   return (
     <div id="main-container">
         <Header />

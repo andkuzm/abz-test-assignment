@@ -89,7 +89,7 @@ export default function RegistrationForm({onSuccess}: {onSuccess: ()=>void}) {
             setErrorMessage("Phone number must start with +380");
             return;
         }
-        if (phone && isNaN(phone)) {
+        if (phone && isNaN(Number(phone))) {
             setErrorMessage("Phone must only include digits");
             return;
         }
