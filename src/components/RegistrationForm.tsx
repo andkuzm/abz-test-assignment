@@ -106,10 +106,8 @@ export default function RegistrationForm({onSuccess}: {onSuccess: ()=>void}) {
                         setSuccess(true);
                         onSuccess();
                     }
-                    else{
-                        console.log(response.data.message)
-                        setErrorMessage(response.data.message);
-                    }
+            }).catch(error => {
+                setErrorMessage(error.response.data.message);
             })
         })
     }
