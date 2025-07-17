@@ -1,0 +1,21 @@
+$primary-color: #F4E041;
+$secondary-color: #00BDD3;
+$background-color: #F8F8F8;
+
+.Header {
+  background: $background-color;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  width: 90.5%;
+  padding-bottom: 13px;
+  padding-left: 1rem;
+  gap:5px;
+
+  .Button-container {
+    display: flex;
+    min-width: 5px;
+    width: fit-content;
+    gap: 1rem;
+  }
+}

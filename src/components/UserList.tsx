@@ -2,11 +2,12 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import type { User } from "./user/User";
 import UserCard from "./UserCard";
+import "./UserList.scss"
 
 export default function UserList() {
     const [users, setUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState(true);
-    const [currentPage, setcurrentPage] = useState(2);
+    const [currentPage, setcurrentPage] = useState("");
     const [lastPage, setLastPage] = useState(false);
 
     useEffect(() => {
@@ -14,6 +15,7 @@ export default function UserList() {
             .get("https://frontend-test-assignment-api.abz.agency/api/v1/users?page=1&count=6")
             .then((response) => {
                 setUsers(response.data.users);
+                setcurrentPage(response.data.links.next_url)
                 setLoading(false);
             });
     }, []);
@@ -23,7 +25,7 @@ export default function UserList() {
     }
 
     return (
-        <div>
+        <div className="UserListMainContainer">
             <ul>
                 {users.map((user) => (
                     <li key={user.email}>
@@ -34,7 +36,6 @@ export default function UserList() {
             { !lastPage &&
                 <button onClick={() => {
                     ShowMoreUsersButtonHandle(currentPage)
-                    setcurrentPage(currentPage + 1);
                 }}>
                 Show more
             </button>
@@ -42,16 +43,14 @@ export default function UserList() {
         </div>
     );
     
-    function ShowMoreUsersButtonHandle(nextPageNumber: number) {
-        console.log(nextPageNumber)
+    function ShowMoreUsersButtonHandle(nextPageUrl: string) {
         axios
-            .get(`https://frontend-test-assignment-api.abz.agency/api/v1/users?page=${nextPageNumber}&count=6`)
+            .get(nextPageUrl)
             .then((response) => {
                 if(response.data.links.next_url==null){
                     setLastPage(true);
                 }
                 setUsers(users.concat(response.data.users));
-                return nextPageNumber;
             })
     }
 }
